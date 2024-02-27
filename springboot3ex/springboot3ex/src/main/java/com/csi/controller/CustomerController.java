@@ -26,6 +26,7 @@ public class CustomerController {
     @Autowired
     private CustomerServiceImpl customerServiceImpl;
 
+
     @PostMapping("/signup")
     public ResponseEntity<Customer> signUp(@Valid @RequestBody Customer customer) {
         return new ResponseEntity<>(customerServiceImpl.signUp(customer), HttpStatus.CREATED);
@@ -40,6 +41,7 @@ public class CustomerController {
     public Optional<Customer> findById(@PathVariable int custId) {
         return customerServiceImpl.findById(custId);
     }
+
 
     @GetMapping("/findall")
     public ResponseEntity<List<Customer>> findAll() {
@@ -123,6 +125,12 @@ public class CustomerController {
         return ResponseEntity.ok(sum);
 
     }
+
+    @GetMapping("/hey")
+    public ResponseEntity<String> sayHello() {
+        return ResponseEntity.ok("Welcome to GitHub");
+    }
+
 
     @DeleteMapping("/deletebyid/{custId}")
 
